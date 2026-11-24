@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f7f2">
+    <meta name="description" content="Discover the details of {{data.productName}} at Shop Karo.">
+    <title>{{data.productName}} — Shop Karo</title>
+    <link rel="stylesheet" href="/css/singleproductdisplay.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/product/" aria-label="Shop Karo home">
+            <span class="brand-mark" aria-hidden="true">s</span>
+            <span>shop<span class="brand-accent">karo</span></span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="nav-link" href="/product/">Home</a>
+            <a class="nav-link" href="/product/form">Add Product</a>
+            <a class="nav-link active" href="/product/display" aria-current="page">View Product</a>
+        </nav>
+
+        <a class="header-cta" href="/product/display">
+            All products <span aria-hidden="true">↗</span>
+        </a>
+    </header>
+
+    <main class="page-main">
+        <a class="back-link" href="/product/display">
+            <span aria-hidden="true">←</span> Back to the collection
+        </a>
+
+        <article class="product-detail">
+            <div class="product-visual">
+                {{#if data.productImage}}
+                <img src="{{data.productImage}}" alt="{{data.productName}}">
+                {{else}}
+                <div class="product-placeholder" aria-hidden="true">✦</div>
+                {{/if}}
+                <span class="image-caption">A GOOD FIND</span>
+            </div>
+
+            <div class="product-content">
+                <p class="eyebrow"><span class="eyebrow-dot"></span> MEET YOUR NEXT FAVORITE</p>
+                <h1>{{data.productName}}</h1>
+                <p class="product-description">A lovely find from the Shop Karo collection. Take a closer look at the details below.</p>
+
+                <div class="price-panel">
+                    <span class="price-label">Price</span>
+                    <strong class="product-price">₹{{data.productPrice}}</strong>
+                </div>
+
+                <section class="product-facts" aria-label="Product information">
+                    <div class="fact">
+                        <span class="fact-icon" aria-hidden="true">✓</span>
+                        <div>
+                            <span class="fact-label">In stock</span>
+                            <strong>{{data.productStock}}</strong>
+                        </div>
+                    </div>
+                    <div class="fact">
+                        <span class="fact-icon quantity-icon" aria-hidden="true">＋</span>
+                        <div>
+                            <span class="fact-label">Quantity</span>
+                            <strong>{{data.productQuantity}}</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <form class="delete-form" action="/product/delete/{{data._id}}" method="POST">
+                    <button type="submit" class="delete-btn">Delete product</button>
+                </form>
+
+                <a href="/product/update/{{data.id}}"class="update-btn">update product</a>
+                
+
+                <p class="product-note"><span aria-hidden="true">✦</span> Thanks for supporting the good finds.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <a href="/product/">← Back to Shop Karo home</a>
+        <span>A little joy in every find.</span>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f7f2">
+    <meta name="description" content="Sign in to your Shop Karo account.">
+    <title>Sign in — Shop Karo</title>
+    <link rel="stylesheet" href="/css/userregister.css">
+</head>
+<body>
+    <main class="register-page">
+        <a class="brand" href="/product/" aria-label="Shop Karo home">
+            <span class="brand-mark" aria-hidden="true">s</span>
+            <span>shop<span class="brand-accent">karo</span></span>
+        </a>
+
+        <section class="register-card" aria-labelledby="page-title">
+            <div class="welcome-panel">
+                <span class="welcome-sparkle sparkle-one" aria-hidden="true">✳</span>
+                <span class="welcome-sparkle sparkle-two" aria-hidden="true">✦</span>
+                <div class="welcome-copy">
+                    <p class="eyebrow">WELCOME BACK TO SHOP KARO</p>
+                    <h1>Your next<br>great find is <span>close.</span></h1>
+                    <p>Sign in and pick up right where you left off. There’s always something good waiting.</p>
+                </div>
+                <div class="welcome-note">
+                    <span class="note-icon" aria-hidden="true">♡</span>
+                    <span>Good finds, right where you left them.</span>
+                </div>
+            </div>
+
+            <div class="form-panel">
+                <div class="form-heading">
+                    <p class="eyebrow">YOUR SHOP KARO ACCOUNT</p>
+                    <h2 id="page-title">Welcome back</h2>
+                    <p>Enter your details to sign in.</p>
+                </div>
+
+                <form method="POST" action="/user/loginData">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-field">
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+                            <button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false" aria-controls="password">
+                                <svg class="password-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path class="eye-shape" d="M2.5 12s3.4-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.4 6.5-9.5 6.5S2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="2.7" stroke="currentColor" stroke-width="1.8"/>
+                                    <path class="eye-slash" d="M4 20 20 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit">Sign in <span aria-hidden="true">→</span></button>
+                    <p class="form-note">New to Shop Karo? <a href="/user/register">Create an account</a></p>
+                </form>
+
+                <a class="back-link" href="/product/">← Back to Shop Karo</a>
+            </div>
+        </section>
+    </main>
+    <script src="/js/password-visibility.js" defer></script>
+</body>
+</html>

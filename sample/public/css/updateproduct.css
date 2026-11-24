@@ -1,0 +1,43 @@
+.optional-mark {
+    color: #898d83;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.current-image {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    padding: 9px;
+    border: 1px solid #e8eae3;
+    border-radius: 8px;
+    background: #fafbf8;
+    color: #6d7167;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.current-image img {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.cancel-link {
+    display: block;
+    margin-top: 15px;
+    color: #6d7167;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    transition: color 160ms ease;
+}
+
+.cancel-link:hover {
+    color: var(--green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}

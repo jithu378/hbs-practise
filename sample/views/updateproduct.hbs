@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f7f2">
+    <meta name="description" content="Update {{data.productName}} in the Shop Karo collection.">
+    <title>Update {{data.productName}} — Shop Karo</title>
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/updateproduct.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/product/" aria-label="Shop Karo home">
+            <span class="brand-mark" aria-hidden="true">s</span>
+            <span>shop<span class="brand-accent">karo</span></span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="nav-link" href="/product/">Home</a>
+            <a class="nav-link" href="/product/form">Add Product</a>
+            <a class="nav-link active" href="/product/display" aria-current="page">View Product</a>
+        </nav>
+
+        <a class="header-cta" href="/product/display">
+            All products <span aria-hidden="true">↗</span>
+        </a>
+    </header>
+
+    <main class="page-main">
+        <section class="page-intro" aria-labelledby="page-title">
+            <p class="eyebrow"><span class="eyebrow-dot"></span> A QUICK REFRESH</p>
+            <h1 id="page-title">Make it <span>just right.</span></h1>
+            <p class="intro-description">Update the details for {{data.productName}}. Your changes will be reflected in the Shop Karo collection.</p>
+            <div class="intro-note">
+                <span class="note-icon" aria-hidden="true">✦</span>
+                <span>Leave the image as-is or choose a new one.</span>
+            </div>
+            <div class="intro-art" aria-hidden="true">
+                <div class="art-circle"></div>
+                <span class="art-sparkle sparkle-one">✳</span>
+                <span class="art-sparkle sparkle-two">✦</span>
+                <span class="art-bag">🛍️</span>
+                <span class="art-tag">A GOOD FIND<br>GETTING BETTER</span>
+            </div>
+        </section>
+
+        <section class="form-card" aria-labelledby="form-title">
+            <div class="form-heading">
+                <div class="form-icon" aria-hidden="true">✎</div>
+                <div>
+                    <p class="eyebrow">EDIT PRODUCT</p>
+                    <h2 id="form-title">Update the details</h2>
+                </div>
+            </div>
+            <p class="form-description">Make your changes below, then save when you're ready.</p>
+
+            <form action="/product/updatesave/{{data._id}}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="productName">Product name <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input
+                        type="text"
+                        id="productName"
+                        name="productName"
+                        value="{{data.productName}}"
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+
+                <div class="field-row">
+                    <div class="form-group">
+                        <label for="productPrice">Price <span class="required-mark" aria-hidden="true">*</span></label>
+                        <div class="input-with-prefix">
+                            <span aria-hidden="true">₹</span>
+                            <input
+                                type="number"
+                                id="productPrice"
+                                name="productPrice"
+                                value="{{data.productPrice}}"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productStock">Stock <span class="required-mark" aria-hidden="true">*</span></label>
+                        <input
+                            type="number"
+                            id="productStock"
+                            name="productStock"
+                            value="{{data.productStock}}"
+                            min="0"
+                            step="1"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="productQuantity">Quantity <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input
+                        type="number"
+                        id="productQuantity"
+                        name="productQuantity"
+                        value="{{data.productQuantity}}"
+                        min="0"
+                        step="1"
+                        required
+                    >
+                </div>
+
+                <div class="form-group image-group">
+                    <label for="productImage">Product image <span class="optional-mark">(optional)</span></label>
+                    {{#if data.productImage}}
+                    <div class="current-image">
+                        <img src="{{data.productImage}}" alt="Current image of {{data.productName}}">
+                        <span>Current product image</span>
+                    </div>
+                    {{/if}}
+                    <label class="upload-area" for="productImage">
+                        <span class="upload-icon" aria-hidden="true">↑</span>
+                        <span class="upload-copy"><strong>Choose a replacement image</strong><span>JPG, PNG or WebP works best</span></span>
+                        <input type="file" id="productImage" name="productImage" accept="image/*">
+                    </label>
+                </div>
+
+                <button type="submit">Save changes <span aria-hidden="true">→</span></button>
+                <p class="form-footnote"><span aria-hidden="true">*</span> Required fields</p>
+                <a class="cancel-link" href="/product/singleproduct/{{data._id}}">Cancel and return to product</a>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a href="/product/">← Back to Shop Karo home</a>
+        <span>A little joy in every find.</span>
+    </footer>
+</body>
+</html>

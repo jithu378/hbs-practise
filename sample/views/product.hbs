@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f7f2">
+    <title>Add a Product — Shop Karo</title>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/product/" aria-label="Shop Karo home">
+            <span class="brand-mark" aria-hidden="true">s</span>
+            <span>shop<span class="brand-accent">karo</span></span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="nav-link" href="/product/">Home</a>
+            <a class="nav-link active" href="/product/form" aria-current="page">Add Product</a>
+            <a class="nav-link" href="/product/display">View Product</a>
+        </nav>
+
+        <a class="header-cta" href="/product/display">
+            Browse products <span aria-hidden="true">↗</span>
+        </a>
+    </header>
+
+    <main class="page-main">
+        <section class="page-intro" aria-labelledby="page-title">
+            <p class="eyebrow"><span class="eyebrow-dot"></span> GROW YOUR SHOP</p>
+            <h1 id="page-title">Add a little <span>good.</span></h1>
+            <p class="intro-description">Share something lovely with the Shop Karo community. Add the details below and your product is ready to go.</p>
+            <div class="intro-note">
+                <span class="note-icon" aria-hidden="true">✦</span>
+                <span>Great products deserve a place to shine.</span>
+            </div>
+            <div class="intro-art" aria-hidden="true">
+                <div class="art-circle"></div>
+                <span class="art-sparkle sparkle-one">✳</span>
+                <span class="art-sparkle sparkle-two">✦</span>
+                <span class="art-bag">🛍️</span>
+                <span class="art-tag">MADE FOR<br>GOOD FINDS</span>
+            </div>
+        </section>
+
+        <section class="form-card" aria-labelledby="form-title">
+            <div class="form-heading">
+                <div class="form-icon" aria-hidden="true">＋</div>
+                <div>
+                    <p class="eyebrow">PRODUCT DETAILS</p>
+                    <h2 id="form-title">Tell us about it</h2>
+                </div>
+            </div>
+            <p class="form-description">A few quick details are all we need to get started.</p>
+
+            <form action="/product/add-product" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="productName">Product name <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input
+                        type="text"
+                        id="productName"
+                        name="productName"
+                        placeholder="e.g. Everyday canvas tote"
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+
+                <div class="field-row">
+                    <div class="form-group">
+                        <label for="productPrice">Price <span class="required-mark" aria-hidden="true">*</span></label>
+                        <div class="input-with-prefix">
+                            <span aria-hidden="true">₹</span>
+                            <input
+                                type="number"
+                                id="productPrice"
+                                name="productPrice"
+                                placeholder="0.00"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productStock">Stock <span class="required-mark" aria-hidden="true">*</span></label>
+                        <input
+                            type="number"
+                            id="productStock"
+                            name="productStock"
+                            placeholder="e.g. 25"
+                            min="0"
+                            step="1"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="productQuantity">Quantity <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input
+                        type="number"
+                        id="productQuantity"
+                        name="productQuantity"
+                        placeholder="Enter product quantity"
+                        min="0"
+                        step="1"
+                        required
+                    >
+                </div>
+
+                <div class="form-group image-group">
+                    <label for="productImage">Product image <span class="required-mark" aria-hidden="true">*</span></label>
+                    <label class="upload-area" for="productImage">
+                        <span class="upload-icon" id="uploadIcon" aria-hidden="true">↑</span>
+                        <img class="upload-preview" id="uploadPreview" alt="Selected product image preview" hidden>
+                        <span class="upload-copy">
+                            <strong id="uploadTitle">Choose an image to upload</strong>
+                            <span id="uploadFileName">JPG, PNG or WebP works best</span>
+                        </span>
+                        <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                    </label>
+                </div>
+
+                <button type="submit">Add product <span aria-hidden="true">→</span></button>
+                <p class="form-footnote"><span aria-hidden="true">*</span> Required fields</p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a href="/product/">← Back to Shop Karo home</a>
+        <span>A little joy in every find.</span>
+    </footer>
+    <script>
+        const productImageInput = document.getElementById("productImage");
+        const uploadArea = document.querySelector(".upload-area");
+        const uploadPreview = document.getElementById("uploadPreview");
+        const uploadIcon = document.getElementById("uploadIcon");
+        const uploadTitle = document.getElementById("uploadTitle");
+        const uploadFileName = document.getElementById("uploadFileName");
+        let previewUrl;
+
+        productImageInput.addEventListener("change", () => {
+            const file = productImageInput.files[0];
+            if (!file) return;
+
+            if (previewUrl) URL.revokeObjectURL(previewUrl);
+            previewUrl = URL.createObjectURL(file);
+            uploadPreview.src = previewUrl;
+            uploadPreview.hidden = false;
+            uploadIcon.hidden = true;
+            uploadArea.classList.add("has-file");
+            uploadTitle.textContent = "Image selected";
+            uploadFileName.textContent = file.name;
+        });
+
+        window.addEventListener("beforeunload", () => {
+            if (previewUrl) URL.revokeObjectURL(previewUrl);
+        });
+    </script>
+</body>
+</html>

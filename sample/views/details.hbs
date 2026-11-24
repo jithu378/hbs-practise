@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f7f2">
+    <meta name="description" content="Your product has been added to the Shop Karo collection.">
+    <title>Product added — Shop Karo</title>
+    <link rel="stylesheet" href="/css/details.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/product/" aria-label="Shop Karo home">
+            <span class="brand-mark" aria-hidden="true">s</span>
+            <span>shop<span class="brand-accent">karo</span></span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="nav-link" href="/product/">Home</a>
+            <a class="nav-link active" href="/product/form" aria-current="page">Add Product</a>
+            <a class="nav-link" href="/product/display">View Product</a>
+        </nav>
+
+        <a class="header-cta" href="/product/display">
+            Browse products <span aria-hidden="true">↗</span>
+        </a>
+    </header>
+
+    <main class="page-main">
+        <section class="success-message" aria-labelledby="page-title">
+            <span class="success-icon" aria-hidden="true">✓</span>
+            <p class="eyebrow">A NEW GOOD FIND</p>
+            <h1 id="page-title">It's in the <span>shop.</span></h1>
+            <p class="success-description">Your product has been added to the collection. Here's a quick look at what you shared.</p>
+        </section>
+
+        <article class="product-card">
+            <div class="product-visual">
+                {{#if data.productImage}}
+                <img src="{{data.productImage}}" alt="{{data.productName}}">
+                {{else}}
+                <div class="product-placeholder" aria-hidden="true">✦</div>
+                {{/if}}
+            </div>
+
+            <div class="product-content">
+                <p class="product-label">NOW IN THE COLLECTION</p>
+                <h2>{{data.productName}}</h2>
+
+                <div class="product-price">
+                    <span>Price</span>
+                    <strong>₹{{data.productPrice}}</strong>
+                </div>
+
+                <div class="product-facts" aria-label="Product information">
+                    <div class="fact">
+                        <span class="fact-icon" aria-hidden="true">✓</span>
+                        <div>
+                            <span class="fact-label">In stock</span>
+                            <strong>{{data.productStock}}</strong>
+                        </div>
+                    </div>
+                    <div class="fact">
+                        <span class="fact-icon quantity-icon" aria-hidden="true">＋</span>
+                        <div>
+                            <span class="fact-label">Quantity</span>
+                            <strong>{{data.productQuantity}}</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-actions">
+                    <a class="primary-btn" href="/product/display">Explore the collection <span aria-hidden="true">→</span></a>
+                    <a class="secondary-btn" href="/product/form">Add another product</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <a href="/product/">← Back to Shop Karo home</a>
+        <span>A little joy in every find.</span>
+    </footer>
+</body>
+</html>
